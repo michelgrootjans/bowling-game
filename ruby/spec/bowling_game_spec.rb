@@ -63,4 +63,15 @@ describe "BowlingGame: " do
       expect(game).to score 150
     end
   end
+
+
+  context "rolling a strike" do
+    before do
+      game.roll 10
+      game.roll 2, 3
+    end
+    it ('counts the next two rolls double') do
+      expect(game).to score (10 + 2 + 3) + (2 + 3)
+    end
+  end
 end

@@ -1,4 +1,6 @@
 class BowlingGame
+  attr_reader :rolls
+
   def initialize
     @rolls = []
   end
@@ -6,6 +8,7 @@ class BowlingGame
   def roll *rolls
     rolls.each do |pins|
       @rolls << pins
+      @rolls << 0 if pins == 10
     end
   end
 
@@ -18,11 +21,14 @@ class BowlingGame
   end
 
   def score_for frame
-    if(is_spare? frame)
-      return 10 + first_roll_of(frame + 1)
-    end
+    return 10 + first_roll_of(frame + 1) + second_roll_of(frame + 1) if is_strike? frame
+    return 10 + first_roll_of(frame + 1) if is_spare? frame
 
     first_roll_of(frame) + second_roll_of(frame)
+  end
+
+  def is_strike? frame
+    first_roll_of(frame) == 10    
   end
 
   def is_spare? frame
