@@ -64,7 +64,6 @@ describe "BowlingGame: " do
     end
   end
 
-
   context "rolling a strike" do
     before do
       game.roll 10
@@ -72,6 +71,16 @@ describe "BowlingGame: " do
     end
     it ('counts the next two rolls double') do
       expect(game).to score (10 + 2 + 3) + (2 + 3)
+    end
+  end
+
+  context "rolling a perfect game" do
+    before do
+      10.times{ game.roll 10 }
+      game.roll 10, 10 # last two roll because last frame was a strike
+    end
+    it ('scores 300') do
+      expect(game).to score 300
     end
   end
 end
