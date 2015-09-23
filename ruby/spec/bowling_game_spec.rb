@@ -53,4 +53,14 @@ describe "BowlingGame: " do
       expect(game).to score (3 + 7 + 7) + (7 + 3 + 2) + 2
     end
   end
+
+  context "rolling all fives" do
+    before do
+      10.times{ game.roll 5,5 }
+      game.roll 5 # last roll because last frame was a spare
+    end
+    it ('scores 150') do
+      expect(game).to score 150
+    end
+  end
 end
