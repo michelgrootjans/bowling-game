@@ -8,13 +8,6 @@ class BowlingGame
     @rolls = []
   end
 
-  def roll *rolls
-    rolls.each do |pins|
-      @rolls << pins
-      @rolls << 0 if pins == @max_pins
-    end
-  end
-
   def score
     (1..@number_of_frames).inject(0) { |score, frame| score += score_for(frame) } 
   end
@@ -57,5 +50,12 @@ class BowlingGame
 
   def roll_number index
     @rolls[index] || 0
+  end
+
+  def roll *rolls
+    rolls.each do |pins|
+      @rolls << pins
+      @rolls << 0 if pins == @max_pins
+    end
   end
 end
