@@ -13,9 +13,7 @@ class BowlingGame
   end
 
   def score
-    (1..10).inject(0) do |score, frame|
-      score += score_for(frame)
-    end
+    (1..10).inject(0) { |score, frame| score += score_for(frame) } 
   end
 
   def score_for frame
