@@ -1,7 +1,7 @@
 require 'bowling_game'
 require 'support/score_matcher'
 
-describe "BowlingGame: " do
+describe "10-pin bowling game: " do
   let(:game){ BowlingGame.new }
 
   context 'a new game' do

@@ -1,14 +1,15 @@
 class BowlingGame
   attr_reader :rolls
 
-  def initialize
+  def initialize max_pins=10
+    @max_pins = max_pins
     @rolls = []
   end
 
   def roll *rolls
     rolls.each do |pins|
       @rolls << pins
-      @rolls << 0 if pins == 10
+      @rolls << 0 if pins == @max_pins
     end
   end
 
@@ -17,14 +18,14 @@ class BowlingGame
   end
 
   def score_for frame
-    return 10 + strike_bonus_for(frame) if is_strike?(frame)
-    return 10 + spare_bonus_for(frame)  if is_spare?(frame)
+    return @max_pins + strike_bonus_for(frame) if is_strike?(frame)
+    return @max_pins + spare_bonus_for(frame)  if is_spare?(frame)
 
     first_roll_of(frame) + second_roll_of(frame)
   end
 
   def is_strike? frame
-    first_roll_of(frame) == 10    
+    first_roll_of(frame) == @max_pins    
   end
 
   def strike_bonus_for frame
@@ -35,7 +36,7 @@ class BowlingGame
   end
 
   def is_spare? frame
-    first_roll_of(frame) + second_roll_of(frame) == 10    
+    first_roll_of(frame) + second_roll_of(frame) == @max_pins    
   end
 
   def spare_bonus_for frame
