@@ -1,8 +1,9 @@
 class BowlingGame
   attr_reader :rolls
 
-  def initialize max_pins=10
+  def initialize max_pins: 10, number_of_frames: 10
     @max_pins = max_pins
+    @number_of_frames = number_of_frames
     @rolls = []
   end
 
@@ -14,7 +15,7 @@ class BowlingGame
   end
 
   def score
-    (1..10).inject(0) { |score, frame| score += score_for(frame) } 
+    (1..@number_of_frames).inject(0) { |score, frame| score += score_for(frame) } 
   end
 
   def score_for frame
