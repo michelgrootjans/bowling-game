@@ -1,10 +1,5 @@
 require 'bowling_game'
-
-RSpec::Matchers.define :score do |expected|
-  match do |game|
-    game.score == expected
-  end
-end
+require 'support/score_matcher'
 
 describe "BowlingGame: " do
   let(:game){ BowlingGame.new }
