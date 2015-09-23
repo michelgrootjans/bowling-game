@@ -1,9 +1,10 @@
 class BowlingGame
   attr_reader :rolls
 
-  def initialize max_pins: 10, number_of_frames: 10
+  def initialize max_pins: 10, number_of_frames: 10, ignore_bonuses: false
     @max_pins = max_pins
     @number_of_frames = number_of_frames
+    @ignore_bonuses = ignore_bonuses
     @rolls = []
   end
 
@@ -26,6 +27,7 @@ class BowlingGame
   end
 
   def is_strike? frame
+    return false if @ignore_bonuses
     first_roll_of(frame) == @max_pins    
   end
 
@@ -37,6 +39,7 @@ class BowlingGame
   end
 
   def is_spare? frame
+    return false if @ignore_bonuses
     first_roll_of(frame) + second_roll_of(frame) == @max_pins    
   end
 
