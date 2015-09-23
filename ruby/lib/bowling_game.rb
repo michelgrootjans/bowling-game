@@ -6,11 +6,13 @@ class BowlingGame
     @frame = []
   end
 
-  def roll pins
-    if @frame.size > 1
-      @score += pins if @frame[0] + @frame[1] == 10
+  def roll *rolls
+    rolls.each do |pins|
+      if @frame.size > 1
+        @score += pins if @frame[0] + @frame[1] == 10
+      end
+      @score += pins
+      @frame << pins
     end
-    @score += pins
-    @frame << pins
   end
 end

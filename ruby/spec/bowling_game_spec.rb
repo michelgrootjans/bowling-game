@@ -14,7 +14,7 @@ describe "BowlingGame: " do
   end
 
   context "rolling a gutter game" do
-    before { 20.times {game.roll 0} }
+    before { 10.times {game.roll 0, 0 } }
     it { expect(game).to score 0 }
   end
 
@@ -35,8 +35,7 @@ describe "BowlingGame: " do
 
   context "rolling a spare" do
     before do
-      game.roll 3
-      game.roll 7
+      game.roll 3, 7
       game.roll 2
     end
     it ('counts the next roll double') do
