@@ -1,5 +1,5 @@
-RSpec::Matchers.define :score do |expected|
+RSpec::Matchers.define :score do |expected_score|
   match do |game|
-    game.score == expected
+    game.score == expected_score
   end
 end

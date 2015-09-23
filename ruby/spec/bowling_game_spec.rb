@@ -32,4 +32,15 @@ describe "BowlingGame: " do
     before { game.roll 2 }
     it { expect(game).to score 2 }
   end
+
+  context "rolling a spare" do
+    before do
+      game.roll 3
+      game.roll 7
+      game.roll 2
+    end
+    it ('counts the next roll double') do
+      expect(game).to score (3 + 7 + 2) + 2
+    end
+  end
 end
