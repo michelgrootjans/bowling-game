@@ -1,10 +1,10 @@
 require 'bowling_game'
 require 'support/score_matcher'
 
-describe "12-pin bowling game: " do
+describe '12-pin bowling game: ' do
   let(:game){ BowlingGame.new(max_pins: 12) }
 
-  context "rolling a spare" do
+  context 'rolling a spare' do
     before do
       game.roll 6, 6
       game.roll 2
@@ -14,7 +14,7 @@ describe "12-pin bowling game: " do
     end
   end
 
-  context "rolling two spares" do
+  context 'rolling two spares' do
     before do
       game.roll 6, 6
       game.roll 7, 5
@@ -25,7 +25,7 @@ describe "12-pin bowling game: " do
     end
   end
 
-  context "rolling all sixes" do
+  context 'rolling all sixes' do
     before do
       10.times{ game.roll 6,6 }
       game.roll 6 # last roll because last frame was a spare
@@ -33,7 +33,7 @@ describe "12-pin bowling game: " do
     it { expect(game).to score 10 * (6+6+6) }
   end
 
-  context "rolling a strike" do
+  context 'rolling a strike' do
     before do
       game.roll 12
       game.roll 2, 3
@@ -43,7 +43,7 @@ describe "12-pin bowling game: " do
     end
   end
 
-  context "rolling a perfect game" do
+  context 'rolling a perfect game' do
     before do
       10.times{ game.roll 12 }
       game.roll 12, 12 # last two roll because last frame was a strike

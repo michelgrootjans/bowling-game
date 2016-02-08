@@ -1,10 +1,10 @@
 require 'bowling_game'
 require 'support/score_matcher'
 
-describe "bowling game without bonuses: " do
+describe 'bowling game without bonuses: ' do
   let(:game){ BowlingGame.new(ignore_bonuses: true) }
 
-  context "rolling a spare" do
+  context 'rolling a spare' do
     before do
       game.roll 3, 7
       game.roll 2
@@ -14,7 +14,7 @@ describe "bowling game without bonuses: " do
     end
   end
 
-  context "rolling two spares" do
+  context 'rolling two spares' do
     before do
       game.roll 3, 7
       game.roll 7, 3
@@ -25,14 +25,14 @@ describe "bowling game without bonuses: " do
     end
   end
 
-  context "rolling all fives" do
+  context 'rolling all fives' do
     before do
       10.times{ game.roll 5,5 }
     end
     it { expect(game).to score 100 }
   end
 
-  context "rolling a strike" do
+  context 'rolling a strike' do
     before do
       game.roll 10
       game.roll 2, 3
@@ -42,7 +42,7 @@ describe "bowling game without bonuses: " do
     end
   end
 
-  context "rolling a perfect game" do
+  context 'rolling a perfect game' do
     before do
       10.times{ game.roll 10 }
     end
